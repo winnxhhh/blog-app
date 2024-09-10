@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta message="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <title>Main Homepage</title>
+    </head>
+
+    <!-- note: all code here is written by me -->
+    <body>
+        <!-- website header -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+        <br>
+        <h1 class="intro">I am the:</h1>
+        <!-- user buttons -->
+        <div id="userButtons">
+            <!-- author button -->
+            <div class="imAuthor">
+                <a href="/articles/authorPage" class="authorLink">
+                    <button class="authorBtn">Author</button>
+                </a>
+            </div>
+            
+            <!-- reader button -->
+            <div class="imReader">
+                <a href="/articles/readerPage" class="readerLink">
+                    <button class="readerBtn">Reader</button>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

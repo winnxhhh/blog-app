@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Edit Article</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <link rel="stylesheet" type="text/css" href="/newDraft.css">
+    </head>
+    
+    <!-- note: all code here is written by me -->
+    <body>
+        <!-- website header -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+            <p id="pageType">Author's Page</p>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+
+        <!-- back button -->
+        <a href="/articles/backAuthor">
+            <button class="backBtn" onclick="alert('You will be going back to the author homepage, any changes will not be saved.')">Back to homepage</button>
+        </a>
+
+        <div>
+            <h1>Edit Article</h1>
+
+            <!-- form to edit article -->
+            <form action="/articles/editdraft/<%= blogArticleList.article_id %>" method="post">
+                <!-- display update dates -->
+                <input type="hidden" name="articleUpdated" value="<%= dateUpdated %>">
+                <p>Date Modified: <%= dateUpdated %></p>
+                <% blogArticleList.forEach(function(articles){ %>
+                    <div>
+                        <!-- display article creation date -->
+                        <p>Date Created: <%= articles.articleCreated %></p>
+                    </div>
+
+                    <input type="hidden" name="article_id" value="<%= articles.article_id %>">
+                    <br>
+                    <br>
+                    <label class="formLabel" for=articleTitle>Title:</label>
+                    <input class="inputText" type="text" name="articleTitle" id="articles" value="<%= articles.articleTitle %>">
+                    <br>
+                    <br>
+                    <label class="formLabel" for=articleDesc>Description:</label>
+                    <textarea class="subText" rows="2" cols="50" name="articleDesc" id="articles"><%= articles.articleDesc %></textarea>
+                    <br>
+                    <br>                
+                    <label class="formLabel" for=articleContent>Article Contents:</label>
+                    <textarea class="mainText" rows="5" cols="50" name="articleContent" id="articles"><%= articles.articleContent %></textarea>
+                <% }) %>
+                <br>
+                <br>
+                <button class="newDraft" type="submit">Update draft</button>
+            </form>
+        </div>
+    </body>
+</html>

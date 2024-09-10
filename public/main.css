@@ -1,0 +1,410 @@
+/* all code here written by me */
+
+*
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body
+{
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#headers
+{
+    display: block;
+}
+
+#blogname
+{
+    font-size: 50px;
+    display: inline-block;
+}
+
+#pageType
+{
+    display: inline-block;
+    font-size: 25px;
+    padding-left: 5px;
+}
+
+#settingsButton
+{
+    display: block;
+    float: right;
+    background-color: #59586b; 
+    border: none;
+    color: white;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition-duration: 0.4s;
+}
+
+#settingsButton:hover
+{
+    background-color: white; 
+    color: #59586b;
+}
+
+#mainBanner
+{
+    text-align: center;
+    background-color: rgb(255, 183, 219);
+    padding: 10px
+}
+
+.blogTitle
+{
+    font-size: 40px;
+}
+
+.welcome
+{
+    font-size: 20px;
+}
+
+.pageTitle
+{
+    text-align: center;
+}
+
+.backBtn
+{
+    display: block;
+    float: right;
+    background-color: #6f6a65; 
+    border: none;
+    color: white;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition-duration: 0.4s;
+} 
+    
+.backBtn:hover
+{
+    background-color: white; 
+    color: #6f6a65;
+}
+
+
+#draftArticles #publishedArticles
+{
+    text-align: left;
+    display: block;
+}
+
+.sectionTitle
+{
+    padding-top: 25px;
+}
+
+#articleTable th
+{
+    padding-right: 30px;
+    font-size: 25px;
+    background-color: rgb(166, 197, 255);
+}
+
+#publishedTable th
+{
+    padding-right: 30px;
+    font-size: 25px;
+    background-color: rgb(255, 234, 138);
+}
+
+#articleTable td
+{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+#publishedTable td
+{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+th, td 
+{
+    border-top: 1px solid #ddd;
+    text-align: left;
+    padding: 5px;
+}
+
+table 
+{
+    width: 100%;
+    border: 0px solid;
+    border-collapse: collapse;
+}
+
+.tdButtons
+{
+    float: center;
+}
+
+.editLink:link
+{
+    text-decoration: none;
+}
+
+.editBtn
+{
+    background-color: #b09271; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition-duration: 0.4s;
+} 
+
+.editBtn:hover
+{
+    background-color: white; 
+    color: #b09271;
+}
+
+.publishBtn
+{
+    background-color: #66996b; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+.publishBtn:hover
+{
+    background-color: white; 
+    color: #66996b;
+}
+
+.deleteBtn
+{
+    background-color: #996666; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+.deleteBtn:hover
+{
+    background-color: white; 
+    color: #996666;
+}
+
+.shareBtn
+{
+    background-color: #a357a2; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+.shareBtn:hover
+{
+    background-color: white; 
+    color: #a357a2;
+}
+
+.viewBtn
+{
+    background-color: #578da3; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+.viewBtn:hover
+{
+    background-color: white; 
+    color: #578da3;
+}
+
+.newDraft
+{
+    background-color: #666c99; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    transition-duration: 0.4s;
+}
+
+.newDraft:hover
+{
+    background-color: white; 
+    color: #666c99;
+}
+
+.filterLabel
+{
+    font-size: 20px;
+}
+
+.filterDiv
+{
+    display: block;
+    float: right;
+    padding-top: 50px;
+}
+
+#filters
+{
+    font-size: 15px;
+}
+
+.cfmBtn
+{
+    background-color: #57a395; 
+    border: none;
+    color: white;
+    width: 100px;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+
+.cfmBtn:hover
+{
+    background-color: white; 
+    color: #57a395;
+}
+
+.publishedTitle
+{
+    display: inline-block;
+}
+
+
+#userButtons
+{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+}
+
+.authorBtn
+{
+    background-color: rgb(166, 197, 255); 
+    border: none;
+    color: black;
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    transition-duration: 0.4s;
+}
+
+.authorBtn:hover
+{
+    background-color: white; 
+    color: rgb(166, 197, 255);
+}
+
+.readerBtn
+{
+    background-color: rgb(255, 234, 138); 
+    border: none;
+    color: black;
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    transition-duration: 0.4s;
+}
+
+.readerBtn:hover
+{
+    background-color: white; 
+    color: rgb(255, 234, 138);
+}
+
+.intro
+{
+    text-align: center;
+    margin: 0px;
+}
+
+hr
+{
+    border-top: 3px solid rgb(134, 134, 134);
+}
+
+.errorMsg
+{
+    color: rgb(163, 36, 36);
+}
+
+.errorMessages
+{
+    margin: 0px;
+}
+
+.settingsForm
+{
+    display: block;
+}
+
+.settingsSub
+{
+    width: 100%;
+    height: 40px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}

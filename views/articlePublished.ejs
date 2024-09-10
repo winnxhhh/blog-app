@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta message="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <link rel="stylesheet" type="text/css" href="/newDraft.css">
+        <link rel="stylesheet" type="text/css" href="/articleLayout.css">
+        <title>Read Article</title>
+    </head>
+
+    <!-- written by me from here-->
+    <body>
+        <!-- website header -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+            <p id="pageType">Reader's Page</p>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+
+        <!-- back button -->
+        <a href="/articles/backReader">
+            <button class="backBtn">Back to homepage</button>
+        </a>
+
+        <h1>Article Page (Reader's View)</h1>
+
+        <div>
+            <% publishedArticlesList.forEach(function(publishedArticles){ %>
+                <div>
+                    <!-- article publish date -->
+                    <p>Date Published: <%= publishedArticles.articlePublished %></p>
+    
+                    <!-- likes count and like button -->
+                    <p>Number of likes: <span id="likes"><%= publishedArticles.likes %></span></p>
+                    <form id="likeForm" action="/articles/<%= publishedArticles.article_id %>/newlike" method="post">
+                        <button class="likeBtn" type="submit" id="likeButton">Like</button>
+                        <input type="hidden" id="likesInput" name="likes" value="<%= publishedArticles.likes %>">
+                    </form>     
+    <!-- written by me until here-->
+
+                    <!-- likes counter logic -->
+                    <script type="text/javascript"> 
+                        let count = 0;
+                        let likeButton = document.getElementById('likeButton');
+                        let likes = document.getElementById('likes');
+                        let likesInput = document.getElementById('likesInput');
+                        let likeForm = document.getElementById('likeForm');
+
+                        likeButton.onclick = function (event) {
+                            count++;
+                            likes.innerHTML = count;
+                            likesInput.value = count;
+                        }
+                    </script>
+                </div>
+
+    <!-- written by me from here-->
+                <input type="hidden" name="article_id" value="<%= publishedArticles.article_id %>">
+                <hr>
+                <!-- article text area -->
+                <h1 class="articleTitle" type="text" name="articleTitle"><%= publishedArticles.articleTitle %></h1>            
+                <p><%= publishedArticles.articleContent %></p>
+                <br>
+                <hr>
+                <div>
+                    <!-- form to post comments -->
+                    <h1>Add a comment!</h1>
+                    <form action="/articles/<%= publishedArticles.article_id %>/newcomment" method="post">
+                        <label class="commentLabel" for=commentName>Name:</label>
+                        <input class="commentTitle" type="text" name="commentName" id="comments">
+                        <br>
+                        <br>
+                        <label class="commentLabel" for=commentContent>Comments:</label>
+                        <textarea class="commentText" rows="2" cols="50" name="commentContent" id="comments"></textarea>
+                        <input type="hidden" name="commentCreated" value="<%= commentDate %>">
+                        <br>
+                        <br>
+                        <button class="postBtn" type="submit">Post comment</button>
+                    </form>
+                </div>
+            <% }) %>
+            <br>
+            <br>
+            <!-- area to display comment after posting it -->
+            <div>
+                <h2>Comments:</h2>
+                <div class="comments">
+                    <% if(commentsList != 0) { %>
+                        <% commentsList.forEach(function(comments){ %>
+                            <!-- comments content -->
+                            <div class="textComments">
+                                <p>Date Commented: <%= comments.commentCreated %></p>
+                                <h3 type="text" name="commentName"><%= comments.commentName %></h3>            
+                                <p><%= comments.commentContent %></p>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <!-- this will be shown instead if there are no comments -->
+                        <h3>There are no comments at this time, be the first to write one!</h3>
+                    <% } %>
+                </div>
+            </div>
+        </div>   
+    </body>
+    <!-- written by me until here--> 
+</html>

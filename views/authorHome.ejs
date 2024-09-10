@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta message="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <title>Author Homepage</title>
+    </head>
+
+    <!-- note: all code here is written by me -->
+    <body>
+        <!-- website header -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+            <p id="pageType">Author's Page</p>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+        
+        <div class="backDiv">
+            <!-- back button -->
+            <a href="/articles/backAll">
+                <button class="backBtn">Back to main page</button>
+            </a>
+            <div>
+                <!-- settings button -->
+                <a href="/articles/settingsPage/1">
+                    <button id="settingsButton">Settings</button>
+                </a>
+            </div>
+        </div>
+        
+        <!-- page title -->
+        <div class="pageTitle">
+            <h1 >Author's Homepage</h1>
+        </div>
+
+        <!-- drafts section -->
+        <div id="draftArticles">
+            <h1 class="sectionTitle">Draft Articles</h1>
+
+            <!-- draft articles table -->
+            <table id="articleTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date Created</th>
+                        <th>Date Modified</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% draftArticlesList.forEach(function(articles){ %>
+                        <tr>
+                            <td><%= articles.articleTitle %></td>
+                            <td><%= articles.articleDesc %></td>
+                            <td><%= articles.articleCreated %></td>
+                            <td><%= articles.articleUpdated %></td>
+                            <!-- action buttons -->
+                            <td class="tdButtons">
+                                <a href="/articles/editdraft/<%= articles.article_id %>" class="editLink">
+                                    <button class="editBtn">Edit</button>   
+                                </a>
+                                <form action="/articles/publish/<%= articles.article_id %>" method="post">
+                                    <button class="publishBtn" type="submit">Publish</button>
+                                </form>
+                                <form action="/articles/deleteDraft/<%= articles.article_id %>" method="post">
+                                <button class="deleteBtn" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+
+            <!-- create new draft button -->
+            <a class='newDraftButton' href="/articles/newdraft">
+                <button class="newDraft">Create New Draft</button>
+            </a>
+        </div>
+        <br>
+        <br>
+
+        <!-- published articles title -->
+        <div class="publishedTitle">
+            <h1 class="sectionTitle">Published Articles</h1>
+        </div>
+
+        <!-- article sorting menu -->
+        <div class="filterDiv">
+            <form action="/articles/authorPage" method="get">
+                <label class="filterLabel" for="filters">Sort by:</label>
+                <select name="filters" id="filters">
+                    <option value="publishDate">Publish Date</option>
+                    <option value="likesNum">Likes</option>
+                    <option value="viewsNum">Views</option>
+                </select>
+                <input type="submit" value="Confirm" class="cfmBtn">
+            </form>
+        </div>
+        
+        <!-- published section -->
+        <div id="publishedArticles">
+            <!-- published articles table -->
+            <table id="publishedTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date Created</th>
+                        <th>Date Modified</th>
+                        <th>Date Published</th>
+                        <th>Views</th>
+                        <th>Likes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% publishedArticlesList.forEach(function(publishedArticles){ %>
+                        <tr>
+                            <td><%= publishedArticles.articleTitle %></td>
+                            <td><%= publishedArticles.articleDesc %></td>
+                            <td><%= publishedArticles.articleCreated %></td>
+                            <td><%= publishedArticles.articleUpdated %></td>
+                            <td><%= publishedArticles.articlePublished %></td>
+                            <td><%= publishedArticles.views %></td>
+                            <td><%= publishedArticles.likes %></td>
+                            <!-- action buttons -->
+                            <td class="tdButtons">  
+                                <button class="shareBtn" onclick="alert('localhost:3000/articles/readArticle/<%= publishedArticles.article_id %>')">Share</button>
+
+                                <a href="/articles/articleMod/<%= publishedArticles.article_id %>">
+                                    <button class="viewBtn">View Article</button>
+                                </a>
+
+                                <form action="/articles/deletePublished/<%= publishedArticles.article_id %>" method="post">
+                                    <button class="deleteBtn" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+

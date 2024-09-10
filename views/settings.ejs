@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Settings</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <link rel="stylesheet" type="text/css" href="/newDraft.css">
+        <link rel="stylesheet" type="text/css" href="/articleLayout.css">
+    </head>
+
+    <!-- note: all code here is written by me (referred to a coursera lab for the error checker) -->
+    <body>
+        <!-- website headers -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+            <p id="pageType">Reader's Page</p>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+
+        <!-- back button -->
+        <a href="/articles/backAuthor">
+            <button class="backBtn" onclick="alert('You will be going back to the author homepage, any changes will not be saved.')">Back to homepage</button>
+        </a>
+
+        <div>
+            <h1>Settings Page</h1>
+            <!-- settings input error checker -->
+            <% if (errors && errors.length > 0) { %>
+                <div class="errorMessages">
+                    <% errors.forEach(error => { %>
+                        <h2 class="errorMsg"><%= error.msg %></h2>
+                    <% }); %>
+                </div>
+            <% } %>
+
+            <!-- settings change form -->
+            <div class="settingsForm">
+                <form action="/articles/editsettings/<%= settingsList.setting_id %>" method="post">
+                    <% settingsList.forEach(function(settings){ %>
+                        <input type="hidden" name="setting_id" value="<%= settings.setting_id %>">
+                        <br>
+                        <br>
+                        <label class="formLabel" for=settingSubtitle>Subtitle:</label>
+                        <textarea class="settingsSub" rows="2" cols="50" name="settingSubtitle" id="settings"><%= settings.settingSubtitle %></textarea>
+                        <br>
+                        <br>  
+                        <label class="formLabel" for=settingTitle>Title:</label>
+                        <input class="settingsSub" type="text" name="settingTitle" id="settings" value="<%= settings.settingTitle %>">
+                        <br>
+                        <br>         
+                        <label class="formLabel" for=settingName>Name:</label>
+                        <input class="settingsSub" type="text" name="settingName" id="settings" value="<%= settings.settingName %>">
+                    <% }) %>
+                    <br>
+                    <br>
+                    <button class="newDraft" type="submit">Update settings</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

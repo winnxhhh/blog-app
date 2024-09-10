@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Create a New Draft</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <link rel="stylesheet" type="text/css" href="/newDraft.css">
+    </head>
+
+    <!-- note: all code here is written by me -->
+    <body>
+        <!-- website header -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+            <p id="pageType">Author's Page</p>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+
+        <!-- back button -->
+        <a href="/articles/backAuthor">
+            <button class="backBtn" onclick="alert('You will be going back to the author homepage, any changes will not be saved.')">Back to homepage</button>
+        </a>
+
+        <div>
+            <h1>Create a New Article Draft</h1>
+
+            <!-- date details -->
+            <div>
+                <p>Date Created: <%= dateCreated %></p>
+                <p>Date Modified: <%= dateCreated %></p>
+            </div>
+
+            <!-- new draft form -->
+            <form action="newdraft" method="post">
+                <label class="formLabel" for=articleTitle>Title:</label>
+                <input class="inputText" type="text" name="articleTitle" id="articles">
+                <br>
+                <br>
+                <label class="formLabel" for=articleDesc>Description:</label>
+                <textarea class="subText" rows="2" cols="50" name="articleDesc" id="articles"></textarea>
+                <br>
+                <br>                
+                <label class="formLabel" for=articleContent>Article Contents:</label>
+                <textarea class="mainText" rows="5" cols="50" name="articleContent" id="articles"></textarea>
+
+                <input type="hidden" name="articleCreated" value="<%= dateCreated %>">
+                <input type="hidden" name="articleUpdated" value="<%= dateCreated %>">
+                <br>
+                <br>
+                <button class="newDraft" type="submit">Create a new draft</button>
+            </form>
+        </div>
+    </body>
+</html>

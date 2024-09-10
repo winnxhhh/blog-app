@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta message="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <title>Reader Homepage</title>
+    </head>
+
+    <!-- note: all code here is written by me -->
+    <body>
+        <!-- website header -->
+        <div id="headers">
+            <h1 id="blogname">BLOG</h1>
+            <p id="pageType">Reader's Page</p>
+        </div>
+
+        <!-- main banner -->
+        <div id="mainBanner">
+            <% settingsList.forEach(function(settings){ %>
+                <p class="welcome"><%= settings.settingSubtitle %></p>
+                <h1 class="blogTitle"><%= settings.settingTitle %></h1>
+                <p class="welcome">By <%= settings.settingName %></p>
+            <% }) %>
+        </div>
+
+        <!-- back button -->
+        <a href="/articles/backAll">
+            <button class="backBtn">Back to main page</button>
+        </a>
+        <br>
+        <br>
+        <h1 class="pageTitle">Reader's Homepage</h1>
+
+        <!-- article sorting menu -->
+        <form action="/articles/readerPage" method="get">
+            <div class="filterDiv">
+                <label class="filterLabel" for="filters">Sort by:</label>
+                <select name="filters" id="filters">
+                    <option value="publishDate">Publish Date</option>
+                    <option value="likesNum">Likes</option>
+                    <option value="viewsNum">Views</option>
+                </select>
+                <input class="cfmBtn" type="submit" value="Confirm">
+            </div>
+        </form>
+
+        <!-- published articles section -->
+        <div id="publishedArticles">
+            <h1 class="sectionTitle">Published Articles</h1>
+            <!-- published articles table -->
+            <table id="articleTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date Published</th>
+                        <th>Views</th>
+                        <th>Likes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% publishedArticlesList.forEach(function(publishedArticles){ %>
+                        <tr>
+                        <td><%= publishedArticles.articleTitle %></td>
+                        <td><%= publishedArticles.articleDesc %></td>
+                        <td><%= publishedArticles.articlePublished %></td>
+                        <td><%= publishedArticles.views %></td>
+                        <td><%= publishedArticles.likes %></td>
+                        <td>
+                            <!-- view article button -->
+                            <a href="/articles/readArticle/<%= publishedArticles.article_id %>">
+                                <button class="viewBtn">View article</button>
+                            </a>
+                        </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+
