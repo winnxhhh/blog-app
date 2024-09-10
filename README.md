@@ -1,4 +1,4 @@
-### Blog Application ###
+# Blog Application #
 hello! welcome here ^_^. this is my project regarding the use of databases. for this project, we used sqlite and node.js. the link to the video website walkthrough is https://youtu.be/1eQ1-Mzw2SU .
 
 if you would like to try this application out yourself, below are the instructions on how to set up, the additional libraries used, as well as a reccommended guide on my website's usage to fully maximise all its features. i hope you enjoy! 
